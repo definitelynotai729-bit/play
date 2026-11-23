@@ -1,0 +1,61 @@
+{
+ "date": "2026-11-23",
+ "kind": "daily",
+ "generator": "claude-haiku-5-5 (offline CLI)",
+ "cases": [
+  {
+   "id": "n20261123-01",
+   "title": "Asking an algorithm to judge which bargains are really bargains",
+   "details": "Exhibit A: a shopping cart that gasps at every 'reduced' sticker it sees.",
+   "tags": [
+    "news"
+   ],
+   "pack": "Today's docket 2026-11-23"
+  },
+  {
+   "id": "n20261123-02",
+   "title": "Staging a dramatic comeback to make the whole tech sector cheer",
+   "details": "Exhibit B: a crowd of traders holding one sign that reads 'WELCOME BACK'.",
+   "tags": [
+    "news"
+   ],
+   "pack": "Today's docket 2026-11-23"
+  },
+  {
+   "id": "n20261123-03",
+   "title": "Greeting a tiny hot planet that has never once RSVP'd",
+   "details": "Exhibit A: a spacecraft that took eight years to arrive fashionably late.",
+   "tags": [
+    "news"
+   ],
+   "pack": "Today's docket 2026-11-23"
+  },
+  {
+   "id": "n20261123-05",
+   "title": "Organising a record-breaking moth gathering in your back garden",
+   "details": "Exhibit A: forty moths at the porch light, all politely wearing tiny name badges.",
+   "tags": [
+    "news"
+   ],
+   "pack": "Today's docket 2026-11-23"
+  },
+  {
+   "id": "n20261123-06",
+   "title": "Hoarding every visitor's attention at a giant moon sculpture",
+   "details": "Exhibit B: a queue of tourists who all said 'over the moon' on the way out.",
+   "tags": [
+    "news"
+   ],
+   "pack": "Today's docket 2026-11-23"
+  },
+  {
+   "id": "n20261123-07",
+   "title": "Selling a heat pump that gives unsolicited advice about the weather",
+   "details": "Exhibit D: the appliance sighs loudly whenever someone opens a window.",
+   "tags": [
+    "news"
+   ],
+   "pack": "Today's docket 2026-11-23"
+  }
+ ]
+}
