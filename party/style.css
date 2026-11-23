@@ -70,6 +70,7 @@ textarea { min-height: 120px; resize: none; }
 .stamp.ACQUITTED { color: var(--green); } .stamp.GUILTY { color: var(--red); } .stamp.HUNG_JURY { color: var(--purple); font-size: clamp(24px, 7vw, 40px); } .stamp.CONTEMPT { color: var(--black); }
 @keyframes slam { 0% { transform: rotate(-8deg) scale(3); opacity: 0; } 100% { transform: rotate(-8deg) scale(1); opacity: 1; } }
 .score-pop { font-size: 30px; font-weight: 700; color: var(--gold); animation: pop .5s .25s both; }
+.bubble:empty { visibility: hidden; }
 @keyframes pop { 0% { transform: scale(0); } 70% { transform: scale(1.25); } 100% { transform: scale(1); } }
 .sentence { font-size: 16px; color: #ffd9cf; }
 .newspaper { background: #f4efe3; color: #111; border-radius: 6px; padding: 10px 12px; box-shadow: var(--shadow); transform: rotate(1.2deg); font-family: Georgia, 'Times New Roman', serif; }
@@ -97,8 +98,13 @@ textarea { min-height: 120px; resize: none; }
 .clip-banner { position: sticky; top: 0; z-index: 20; background: var(--gold); color: #2a1406; font-weight: 700; font-size: 26px; text-align: center; padding: 14px 12px; box-shadow: 0 6px 0 rgba(0,0,0,.3); letter-spacing: .5px; }
 body.clip #app { padding-top: 18px; }
 body.clip .report, body.clip .note { display: none; }
-.verdict-row { display: flex; align-items: center; gap: 4px; }
-.verdict-row .judge-wrap { flex: none; width: 42%; }
+.verdict-row { display: flex; align-items: center; justify-content: center; gap: 18px; }
+.verdict-row .judge-wrap { flex: none; width: 46%; max-width: 210px; }
 .verdict-row .judge { width: 100%; height: auto; }
-.verdict-row .stack { flex: 1; min-width: 0; align-items: center; }
+.verdict-row .score-pop { font-size: 40px; }
+/* the stamp gets its own full-width row so even CONTEMPT / HUNG JURY at -8deg stays on screen at 320 px */
+.stamp-row { display: flex; justify-content: center; margin: -6px 0 4px; overflow: visible; }
+.stamp-row .stamp { font-size: clamp(30px, 10.5vw, 56px); max-width: calc(100vw - 48px); white-space: nowrap; }
+.stamp-row .stamp.HUNG_JURY { font-size: clamp(26px, 9vw, 48px); }
 body.clip .defence { font-size: 24px; } body.clip .bubble { font-size: 23px; } body.clip .accused { font-size: 34px; } body.clip .who { font-size: 26px; } body.clip .newspaper .head { font-size: 30px; } body.clip .sentence { font-size: 19px; } body.clip .judge { width: 200px; height: 175px; }
+#clip-sync { position: fixed; left: 0; top: 0; width: 4px; height: 4px; background: #f2b935; z-index: 99; }
