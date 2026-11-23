@@ -93,7 +93,7 @@ button.chip.sel { background: var(--teal); color: #16283a; border-color: var(--t
 #hud .flash { top: 45%; left: 50%; transform: translateX(-50%); font-size: 26px; font-weight: 700; color: var(--gold); text-shadow: 0 3px 0 #25344a; opacity: 0; transition: opacity 0.2s; }
 #hud .flash.show { opacity: 1; }
 #hud .hint { bottom: 22%; left: 50%; transform: translateX(-50%); background: var(--glass); padding: 8px 14px; border-radius: 12px; font-size: 17px; white-space: nowrap; max-width: 92vw; white-space: normal; text-align: center; }
-body.touchmode #hud .hint { bottom: auto; top: 140px; }
+body.touchmode #hud .hint { bottom: 150px; top: auto; }
 #hud .speed { bottom: 18px; right: 20px; font-size: 22px; font-weight: 700; text-shadow: 0 2px 0 #25344a; font-variant-numeric: tabular-nums; }
 #hud .charge { bottom: 52px; right: 20px; width: 120px; height: 10px; border-radius: 6px; background: #25344a88; overflow: hidden; opacity: 0; transition: opacity 0.15s; }
 #hud .charge.on { opacity: 1; }
@@ -103,7 +103,17 @@ body.touchmode #hud .hint { bottom: auto; top: 140px; }
 body.touchmode .touch { display: block; }
 body.touchmode #hud .speed { bottom: auto; top: 92px; right: 12px; font-size: 16px; }
 body.touchmode #hud .charge { bottom: auto; top: 118px; right: 12px; width: 90px; }
-.touch .tl, .touch .tr { position: absolute; bottom: max(16px, env(safe-area-inset-bottom)); display: flex; gap: 12px; }
+.touch .tl, .touch .tr { position: absolute; bottom: calc(16px + var(--safe-area-inset-bottom, 0px)); display: flex; gap: 12px; }
+.touch.halves { height: 62%; }
+.touch .zone { position: absolute; top: 0; bottom: 0; width: 50%; display: flex; align-items: flex-end; padding: 0 0 calc(22px + var(--safe-area-inset-bottom, 0px)); }
+.touch .zl { left: 0; justify-content: flex-start; padding-left: calc(22px + var(--safe-area-inset-left, 0px)); }
+.touch .zr { right: 0; justify-content: flex-end; padding-right: calc(22px + var(--safe-area-inset-right, 0px)); }
+.touch .zone span { width: 76px; height: 76px; border-radius: 50%; background: rgba(29,41,61,0.35); border: 2px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; }
+.touch .zone.on span { background: rgba(255,209,102,0.75); color: #25344a; }
+.touch .zone.on { background: linear-gradient(transparent, rgba(255,255,255,0.08)); }
+.touch .fl { position: absolute; right: 22px; top: 0; width: 84px; height: 84px; }
+.tset { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+button.small.on { border-color: var(--teal); }
 .touch .tl { left: 16px; } .touch .tr { right: 16px; align-items: flex-end; }
 .tbtn { width: 84px; height: 84px; border-radius: 22px; background: rgba(29,41,61,0.45); border: 2px solid rgba(255,255,255,0.35); display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 700; color: #fff; }
 .tbtn.drift { width: 104px; height: 104px; background: rgba(255,106,85,0.5); font-size: 20px; }
@@ -156,6 +166,17 @@ button.eb.go { background: linear-gradient(180deg, #ff7b5c, #ffb547); color: #25
   #hud .cp { top: 62px; right: 12px; font-size: 14px; }
   #hud .split { top: 92px; }
   #pre { align-items: flex-end; justify-content: center; }
+}
+body.covermode .screen, body.covermode #toast, body.covermode .modal { display: none !important; }
+@media (max-height: 600px) {
+  #title { gap: 6px; padding: 8px 16px; }
+  .logo .l1, .logo .l2 { font-size: min(13vw, 13vh); }
+  .tag { font-size: 15px; margin-bottom: 2px; }
+  .menu { display: grid; grid-template-columns: 1fr 1fr; width: min(520px, 92vw); gap: 8px; }
+  button.big { padding: 10px 14px; font-size: 18px; }
+  .stats { margin-top: 2px; font-size: 15px; } .foot { margin-top: 2px; }
+  .prebody { padding: 10px 14px; gap: 5px; max-height: calc(100vh - 70px); overflow-y: auto; }
+  .mrow { font-size: 15px; }
 }
 #toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); background: var(--navy); padding: 10px 16px; border-radius: 12px; opacity: 0; transition: 0.2s; z-index: 40; pointer-events: none; text-align: center; max-width: 90vw; }
 #toast.show { opacity: 1; transform: translateX(-50%); }
