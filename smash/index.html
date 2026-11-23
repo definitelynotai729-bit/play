@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Kaboomino</title>
-<script>/* start the physics download right away, in parallel with game.js (zstd: 0.93 MB vs 1.18 MB gzip) */try{window.__RAPIER_ZST=fetch("rapier.wasm.zst").then(function(r){return r.ok?r.arrayBuffer():null}).catch(function(){return null})}catch(e){}</script>
+<script>/* start the physics download right away, in parallel with game.js (zstd: 0.93 MB vs 1.18 MB gzip) */try{window.__RAPIER_ZST=fetch("rapier.wasm.zst?v=a0b9eeb417").then(function(r){return r.ok?r.arrayBuffer():null}).catch(function(){return null})}catch(e){}</script>
 <meta name="description" content="A physics demolition puzzle: one spark, how far can the chain go?">
 <style>
 :root{--ink:#2a1d3a;--paper:#fff8ec;--accent:#ff5a3a;--gold:#ffc83a;--ok:#3ccf7a;--font:ui-rounded,"Arial Rounded MT Bold","Nunito","Trebuchet MS",system-ui,sans-serif}
@@ -109,6 +109,6 @@ button{font-family:var(--font);cursor:pointer;border:0}
 <div id="toast"></div>
 <div id="modal"></div>
 <div id="loading">Loading…</div>
-<script type="module" src="./game.js"></script>
+<script type="module" src="./game.js?v=b3e3a366e9"></script>
 </body>
 </html>
