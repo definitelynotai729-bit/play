@@ -102,6 +102,9 @@ body.touchmode #hud .hint { bottom: 150px; top: auto; }
 #hud .stars.bump { animation: bump 0.3s ease-out; }
 @keyframes bump { 0% { transform: scale(1.5); } 100% { transform: scale(1); } }
 body.coaching #hud .top { top: 62px; } body.coaching #hud .split { top: 120px; }
+#hud .stuck { top: 40%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.25s; pointer-events: none; font-size: 22px; font-weight: 700; color: #fff; text-shadow: 0 2px 0 #25344a; display: flex; align-items: center; gap: 10px; }
+#hud .stuck.show { opacity: 1; pointer-events: auto; }
+#hud .stuck .kcap { animation: keypress 1s infinite; }
 .coachkey { bottom: 24%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; pointer-events: none; }
 .coachkey[data-key="none"] .kcap { display: none; }
 .coachkey .ktext { font-size: 20px; font-weight: 700; color: #fff; text-shadow: 0 2px 0 #25344a, 0 0 12px rgba(0,0,0,0.4); }
