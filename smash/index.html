@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Kaboomino</title>
-<script>/* start the physics download right away, in parallel with game.js (zstd: 0.93 MB vs 1.18 MB gzip) */try{window.__RAPIER_ZST=fetch("rapier.wasm.zst?v=a0b9eeb417").then(function(r){return r.ok?r.arrayBuffer():null}).catch(function(){return null})}catch(e){}</script>
+<title>Topplestorm</title>
+<script>/* start the physics download right away, in parallel with game.js (zstd: 0.93 MB vs 1.18 MB gzip) */try{window.__RAPIER_ZST_URL="rapier.wasm.zst?v=a0b9eeb417";window.__RAPIER_ZST=fetch(window.__RAPIER_ZST_URL).then(function(r){return r.ok?r.arrayBuffer():null}).catch(function(){return null})}catch(e){}</script>
 <meta name="description" content="A physics demolition puzzle: one spark, how far can the chain go?">
 <style>
 :root{--ink:#2d2219;--paper:#f8f1e6;--accent:#b9463c;--accent2:#cf5a4a;--gold:#d6a63c;--ok:#3ccf7a;--font:ui-rounded,"Arial Rounded MT Bold","Nunito","Trebuchet MS",system-ui,sans-serif}
@@ -64,6 +64,7 @@ button{font-family:var(--font);cursor:pointer;border:0}
 #modal.titlem .card{background:#fff8ecee;padding:12px 18px 14px;max-width:460px}
 #modal.titlem h1{font-size:clamp(40px,9vw,64px);margin:0}
 #modal.titlem .tag{margin:8px 0 12px}
+@media (min-aspect-ratio:5/4) and (min-width:820px){#modal.titlem{justify-items:start;align-items:center;padding-left:max(5vw,24px);background:linear-gradient(90deg,#2a1d3a55,transparent 45%)}}
 .card{background:var(--paper);border-radius:24px;padding:20px;box-shadow:0 10px 0 #0003,0 20px 60px #0004;max-width:min(560px,100%);width:100%;text-align:center;max-height:calc(100vh - 32px);overflow:auto}
 .card.light{max-width:340px}
 .title h1{font-size:clamp(44px,11vw,76px);line-height:.92;margin:6px 0 4px;color:#fff;-webkit-text-stroke:3px var(--ink);text-shadow:0 7px 0 var(--ink);letter-spacing:1px;transform:rotate(-3deg)}
@@ -161,6 +162,6 @@ body,button{font-family:var(--font)}
 <div id="toast"></div>
 <div id="modal"></div>
 <div id="loading">Loading…</div>
-<script type="module" src="./game.js?v=2227d8dd39"></script>
+<script type="module" src="./game.js?v=85a4ddd201"></script>
 </body>
 </html>
