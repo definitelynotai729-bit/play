@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Topplestorm</title>
 <script>/* start the physics download right away, in parallel with game.js (zstd: 0.93 MB vs 1.18 MB gzip) */try{window.__RAPIER_ZST_URL="rapier.wasm.zst?v=a0b9eeb417";window.__RAPIER_ZST=fetch(window.__RAPIER_ZST_URL).then(function(r){return r.ok?r.arrayBuffer():null}).catch(function(){return null})}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='4' width='18' height='24' rx='5' fill='%23c43b30'/%3E%3Crect x='7' y='12' width='18' height='7' fill='%23fff'/%3E%3C/svg%3E">
 <meta name="description" content="A physics demolition puzzle: one spark, how far can the chain go?">
 <style>
 :root{--ink:#2d2219;--paper:#f8f1e6;--accent:#b9463c;--accent2:#cf5a4a;--gold:#d6a63c;--ok:#3ccf7a;--font:ui-rounded,"Arial Rounded MT Bold","Nunito","Trebuchet MS",system-ui,sans-serif}
@@ -106,7 +107,7 @@ button{font-family:var(--font);cursor:pointer;border:0}
 .themes.big .theme img{width:104px;height:59px}.themes.big .theme{font-size:13px}
 .settingsp{text-align:left}.settingsp h3{margin:14px 0 4px;font-size:15px}.settingsp .row{justify-content:flex-start}.settingsp .note{font-size:12px;opacity:.7;margin-top:12px}
 .lhead #lSet{margin-left:auto}
-body .kc-toasts{top:calc(var(--safe-area-inset-top,0px) + 140px)!important}
+body .kc-toasts{top:auto!important;bottom:calc(var(--safe-area-inset-bottom,0px) + 108px)!important;right:10px!important}
 body.coaching .top{top:calc(max(8px,var(--safe-area-inset-top,0px)) + 62px)}   /* clear the kit coach goal tracker */
 .fakead{position:fixed;inset:0;background:#000c;color:#fff;display:grid;place-items:center;font-size:22px;font-weight:900;z-index:9}
 @media (max-width:520px){.tool{width:60px;height:70px}.tool .ic{width:28px;height:28px}.det{font-size:15px;padding:13px 12px}.chainb{font-size:34px;-webkit-text-stroke:2px #c0281a}.score{min-width:70px}#score{font-size:18px}.obj{padding:5px 8px}}
@@ -152,6 +153,58 @@ body,button{font-family:var(--font)}
 .tot{display:flex;align-items:center;gap:4px}.tot .star{width:18px;height:18px}
 .chainb{font-family:var(--font);font-weight:700}
 #toast{font-family:var(--font);font-weight:600;border:3px solid #ffffff55}
+
+/* the layout boxes never take taps: only the buttons in them do (#hud>* used to win over .bottom's none) */
+#hud>.top,#hud>.bottom,#hud>.chainb,#hud .tools,#hud .acts{pointer-events:none}
+#hud .tools>*,#hud .acts>*,#hud .top>*{pointer-events:auto}
+/* ---- M6: honest, readable HUD; pause / how-to; landscape phones ---- */
+#toast{z-index:40}
+.lrow{display:flex;align-items:baseline;gap:8px}.lrow .lname{flex:1;min-width:0}
+.onow{font-weight:700;font-size:15px;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.otext{font-size:13.5px;line-height:1.2;white-space:normal;overflow:visible;opacity:.9}
+.nxt{font-size:12px;font-weight:600;min-height:14px;line-height:14px;opacity:.95;white-space:nowrap}
+.tool .tn{font-size:12px}.tool{width:76px}
+.acts{flex:none}.fin,.small,.det{white-space:nowrap}
+.fin.again{display:flex;align-items:center;gap:8px;background:linear-gradient(var(--accent2),var(--accent));box-shadow:0 5px 0 color-mix(in srgb,var(--accent) 55%,#000)}
+.fin.again svg{width:20px;height:20px}
+.small{font-size:14px;min-height:40px;color:var(--ink);border:3px solid var(--woodd)}
+.ib svg{width:100%;height:100%}
+.lv .nm{font-size:12px;white-space:normal;line-height:1.1;min-height:26px;display:grid;place-items:center;overflow:visible}
+.lv.locked{opacity:.5}.lv.nope{animation:nope .35s}
+@keyframes nope{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.theme{font-size:12px}.chip{min-height:40px;opacity:.85}
+.rows div.hit b::after{content:' ✓';color:#2aa860}
+.tip{font-weight:600;margin:4px;opacity:.85}
+.pausep .col{display:flex;flex-direction:column;gap:10px;margin:8px auto;max-width:260px}.pausep .col .btn{justify-content:center}
+.pausep h2,.howto h2{margin:2px 0 6px}.pgoal{margin:2px 0 8px;line-height:1.35}
+.howto .btn{position:sticky;bottom:2px}
+.howto ul{text-align:left;margin:6px 0 14px;padding-left:20px;line-height:1.35}.howto li{margin:5px 0}
+#modal{place-items:safe center}
+/* scroll cue: a shadow at the edge of any panel that has more below or above */
+.card{background:linear-gradient(#fffaf2 30%,#fffaf200),linear-gradient(#f4e8d200,#f4e8d2 70%) 0 100%,radial-gradient(farthest-side at 50% 0,#0004,#0000),radial-gradient(farthest-side at 50% 100%,#0005,#0000) 0 100%,#f8efdf;background-repeat:no-repeat;background-size:100% 40px,100% 44px,100% 14px,100% 16px,auto;background-attachment:local,local,scroll,scroll,scroll}
+.card{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+@media (max-width:400px){.lname{white-space:normal;overflow:visible;line-height:1.1}}
+@media (max-width:520px){.tool{width:66px;height:74px}.tool .tn{font-size:11.5px}.btn{padding:10px 14px 12px}.results h2{font-size:28px}.rscore{font-size:34px}.lname{font-size:14px}}
+@media (max-height:480px) and (orientation:landscape){
+  .top{left:8px;right:8px}.obj{flex:0 1 420px;padding:3px 10px 5px;margin:0 auto}.lname{font-size:13px}.otext{font-size:12.5px}.bar{height:7px;margin-top:2px}
+  .score{padding:1px 10px;min-width:74px}#score{font-size:17px}.stars .star{width:13px;height:13px}.nxt{font-size:11.5px;line-height:12px;min-height:12px}
+  .bottom{align-items:flex-end}.tools{flex-direction:column-reverse;flex:none;max-height:calc(100vh - 76px);overflow-x:hidden;overflow-y:auto;padding:6px 8px 4px 2px}
+  .bottom{justify-content:space-between}.tool{width:64px;height:60px;border-radius:13px;padding:3px}.tool .ic{width:26px;height:26px}.tool .tn{font-size:11px;margin-top:0}.tool.sel{transform:none}
+  .tool .cnt{top:-4px;right:-6px;min-width:20px;height:20px;font-size:12px}
+  .det{padding:12px 14px;font-size:15px}.fin{padding:10px 12px}
+  #toast{bottom:8px;max-width:min(52vw,420px);font-size:13px;padding:7px 12px}
+  .chainb{font-size:34px;top:24%}
+  body .kc-toasts{bottom:56px!important}
+  body.coaching .top{top:max(8px,var(--safe-area-inset-top,0px))}body.coaching .obj{visibility:hidden}
+  #modal{padding:8px}.card{padding:10px 14px;max-height:calc(100vh - 16px)}
+  #modal.titlem{align-items:center;justify-items:start;padding-left:max(16px,var(--safe-area-inset-left,0px))}
+  #modal.titlem .card{max-width:min(430px,56vw);padding:8px 12px}
+  .title .logo{width:min(250px,70%);margin:0 auto}.title .tag{margin:2px 0 4px;font-size:13px}.title .btn.big{font-size:20px;padding:8px 26px 10px}
+  .title .row{margin-top:8px}.title .btn{padding:7px 11px 9px;font-size:14px}.title .themes{margin-top:6px;gap:4px}.title .theme img{width:52px;height:30px}.title .theme{font-size:11px}
+  .title .chip{min-height:34px;padding:2px 8px}
+  .results h2{font-size:24px;margin:0}.rstars .star{width:40px;height:40px}.rscore{font-size:28px;line-height:1.1}.rows{margin:4px auto;max-width:460px}.results .row{margin-top:6px}.results .btn.ad{margin-top:6px}
+  .pausep .col{display:grid;grid-template-columns:1fr 1fr;max-width:420px}.howto ul{font-size:14px;margin:2px 0 8px}.howto li{margin:2px 0}
+}
 </style>
 </head>
 <body>
@@ -162,6 +215,6 @@ body,button{font-family:var(--font)}
 <div id="toast"></div>
 <div id="modal"></div>
 <div id="loading">Loading…</div>
-<script type="module" src="./game.js?v=1af49b57bf"></script>
+<script type="module" src="./game.js?v=d3c129d6a0"></script>
 </body>
 </html>
