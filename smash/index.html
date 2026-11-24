@@ -14,7 +14,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#ffd9a8;font-family:va
 #loading{position:fixed;inset:0;display:grid;place-items:center;font-size:28px;font-weight:900;color:#fff;text-shadow:0 3px 0 #c0502a;background:linear-gradient(#7fc8ff,#ffe3b0 60%,#ffb36b)}
 #hud,#fx{position:fixed;inset:0;pointer-events:none}
 #hud>*{pointer-events:auto}
-.nohud #hud,.nohud #fx,.nohud #toast{display:none}
+.nohud #hud,.nohud #fx,.nohud #toast,.nohud .kc-root,.capmode .kc-root{display:none!important}
 button{font-family:var(--font);cursor:pointer;border:0}
 .hidden{display:none!important}
 .top{position:absolute;top:max(8px,var(--safe-area-inset-top,0px));left:8px;right:8px;display:flex;gap:8px;align-items:flex-start;pointer-events:none}
@@ -105,17 +105,62 @@ button{font-family:var(--font);cursor:pointer;border:0}
 .themes.big .theme img{width:104px;height:59px}.themes.big .theme{font-size:13px}
 .settingsp{text-align:left}.settingsp h3{margin:14px 0 4px;font-size:15px}.settingsp .row{justify-content:flex-start}.settingsp .note{font-size:12px;opacity:.7;margin-top:12px}
 .lhead #lSet{margin-left:auto}
+body .kc-toasts{top:calc(var(--safe-area-inset-top,0px) + 140px)!important}
+body.coaching .top{top:calc(max(8px,var(--safe-area-inset-top,0px)) + 62px)}   /* clear the kit coach goal tracker */
 .fakead{position:fixed;inset:0;background:#000c;color:#fff;display:grid;place-items:center;font-size:22px;font-weight:900;z-index:9}
 @media (max-width:520px){.tool{width:60px;height:70px}.tool .ic{width:28px;height:28px}.det{font-size:15px;padding:13px 12px}.chainb{font-size:34px;-webkit-text-stroke:2px #c0281a}.score{min-width:70px}#score{font-size:18px}.obj{padding:5px 8px}}
+
+/* ---- M5 wooden-toy UI: display font, painted-wood buttons with depth, wooden plaques, glossy stars ---- */
+@font-face{font-family:'Fredoka';src:url(fonts/fredoka-latin-600-normal.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Fredoka';src:url(fonts/fredoka-latin-700-normal.woff2) format('woff2');font-weight:700 900;font-display:swap}
+:root{--font:'Fredoka',ui-rounded,"Arial Rounded MT Bold","Nunito","Trebuchet MS",system-ui,sans-serif;--wood:#c8925e;--wood2:#a7713f;--woodd:#6b4421}
+body,button{font-family:var(--font)}
+.btn{position:relative;display:inline-flex;align-items:center;gap:8px;border-radius:16px;padding:11px 18px 13px;font-weight:700;letter-spacing:.2px;color:var(--ink);
+  background:linear-gradient(#fffaf0,#f1e2c6);border:3px solid var(--woodd);box-shadow:inset 0 3px 0 #fff,inset 0 -4px 0 #0000001a,0 5px 0 var(--woodd),0 8px 14px #0003}
+.btn svg{width:22px;height:22px;flex:none}
+.btn:active{transform:translateY(3px);box-shadow:inset 0 3px 0 #fff,inset 0 -4px 0 #0000001a,0 2px 0 var(--woodd)}
+.btn.primary{color:#fff;text-shadow:0 2px 0 #0005;background:linear-gradient(var(--accent2),var(--accent));border-color:color-mix(in srgb,var(--accent) 55%,#000);
+  box-shadow:inset 0 3px 0 #ffffff66,inset 0 -5px 0 #0002,0 5px 0 color-mix(in srgb,var(--accent) 50%,#000),0 8px 14px #0003}
+.btn.big{font-size:26px;padding:14px 44px 16px;border-radius:20px}.btn.big svg{width:28px;height:28px}
+.btn small{display:inline-flex;align-items:center;gap:2px}.btn small .star{width:15px;height:15px}
+.btn.ad{justify-content:center}
+.chip{display:inline-flex;align-items:center;gap:5px}.chip svg{width:16px;height:16px}
+.card{background:linear-gradient(#fffaf2,#f4e8d2);border:4px solid var(--woodd);box-shadow:inset 0 0 0 3px #fff8,0 10px 0 #0004,0 24px 60px #0005}
+.title .logo{display:block;width:min(520px,86%);height:auto;margin:-6px auto 2px;filter:drop-shadow(0 6px 6px #0004)}
+#modal.titlem .card{background:linear-gradient(#fffaf2ee,#f4e8d2ee)}
+.star{width:16px;height:16px;display:inline-block;vertical-align:-3px}
+.stars{display:flex;gap:1px;justify-content:center}.stars .star{width:16px;height:16px}
+.score{background:linear-gradient(var(--wood),var(--wood2));border:3px solid var(--woodd);box-shadow:inset 0 2px 0 #fff6,0 4px 0 var(--woodd),0 6px 12px #0003;color:#fff;text-shadow:0 2px 0 var(--woodd)}
+#score{font-weight:700}
+.obj{background:linear-gradient(#fffaf2,#f3e6cf);border:3px solid var(--woodd);box-shadow:inset 0 2px 0 #fff,0 4px 0 #0003}
+.bar{background:#6b442133;height:10px;border-radius:6px;box-shadow:inset 0 2px 2px #0003}
+.bar i{background:linear-gradient(#ffb04a,#ff6a2a);box-shadow:inset 0 2px 0 #fff6}
+.ib{border:3px solid var(--woodd);background:linear-gradient(#fffaf0,#f1e2c6);box-shadow:inset 0 2px 0 #fff,0 4px 0 var(--woodd)}
+.tool{border:3px solid var(--woodd);background:linear-gradient(#fffaf0,#efdfc2);box-shadow:inset 0 3px 0 #fff,0 5px 0 var(--woodd)}
+.tool .cnt{background:var(--accent);border:2px solid #fff;box-shadow:0 2px 0 #0003}
+.tool.sel{outline:none;border-color:var(--tc);box-shadow:inset 0 3px 0 #fff,0 5px 0 var(--woodd),0 0 0 4px var(--tc)}
+.det{border:3px solid color-mix(in srgb,var(--accent) 50%,#000);text-shadow:0 2px 0 #0005}
+.lv{border:3px solid var(--woodd);background:linear-gradient(#fffaf0,#efdfc2);box-shadow:inset 0 3px 0 #fff,0 4px 0 var(--woodd)}
+.lv .n{font-weight:700}.lv .st{display:flex;gap:1px}.lv .st .star{width:15px;height:15px}
+.world{border:3px solid var(--woodd);box-shadow:inset 0 3px 0 #fff5}
+.wname{font-weight:700;font-size:18px}
+.rstars b{display:inline-block}.rstars .star{width:62px;height:62px;vertical-align:middle;filter:drop-shadow(0 4px 0 #0003)}
+.rstars b.on{animation:star .5s backwards cubic-bezier(.3,1.8,.5,1)}
+.results h2{font-weight:700;color:var(--accent);text-shadow:0 3px 0 #0002}
+.rscore{font-weight:700}
+.tot{display:flex;align-items:center;gap:4px}.tot .star{width:18px;height:18px}
+.chainb{font-family:var(--font);font-weight:700}
+#toast{font-family:var(--font);font-weight:600;border:3px solid #ffffff55}
 </style>
 </head>
 <body>
+<svg id="kb-defs" width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="kb-star1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3a0"/><stop offset="1" stop-color="#f5a300"/></linearGradient><linearGradient id="kb-star0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00000022"/><stop offset="1" stop-color="#00000033"/></linearGradient></defs></svg>
 <canvas id="c"></canvas>
 <div id="fx"></div>
 <div id="hud"></div>
 <div id="toast"></div>
 <div id="modal"></div>
 <div id="loading">Loading…</div>
-<script type="module" src="./game.js?v=6541224605"></script>
+<script type="module" src="./game.js?v=2227d8dd39"></script>
 </body>
 </html>
