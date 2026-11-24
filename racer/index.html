@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Drift Ghost</title>
+<link rel="icon" href="data:,">
 <style>
 @font-face { font-family: 'Fredoka'; font-weight: 500; font-display: swap; src: url(fredoka-500.woff2) format('woff2'); }
 @font-face { font-family: 'Fredoka'; font-weight: 700; font-display: swap; src: url(fredoka-700.woff2) format('woff2'); }
@@ -20,10 +21,12 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; }
 @keyframes ld { from { margin-left: 0 } to { margin-left: 60% } }
 
 /* title */
-#title { flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; background: radial-gradient(ellipse at center, rgba(37,52,74,0.15), rgba(37,52,74,0.55)); }
+#title { flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; background: linear-gradient(90deg, rgba(25,36,62,0.78), rgba(25,36,62,0.35) 45%, rgba(25,36,62,0) 70%); align-items: flex-start; padding-left: 7vw; }
 .logo { display: flex; flex-direction: column; align-items: center; line-height: 0.85; font-weight: 700; letter-spacing: 2px; filter: drop-shadow(0 6px 0 rgba(37,52,74,0.6)); }
 .logo .l1 { font-size: clamp(54px, 13vw, 110px); color: var(--coral); -webkit-text-stroke: 3px #fff; }
 .logo .l2 { font-size: clamp(54px, 13vw, 110px); color: #bff6ff; -webkit-text-stroke: 3px #25344a; opacity: 0.92; }
+.logoimg { width: min(460px, 78vw); filter: drop-shadow(0 8px 12px rgba(0,0,0,0.25)); animation: logoin 0.7s cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes logoin { from { transform: scale(0.6) rotate(-6deg); opacity: 0; } }
 .tag { font-size: 18px; color: #fff; text-shadow: 0 2px 0 #25344a; margin-bottom: 8px; text-align: center; }
 .menu { display: flex; flex-direction: column; gap: 10px; width: min(320px, 90vw); }
 button.big { background: var(--glass); border: 2px solid rgba(255,209,102,0.35); padding: 13px 18px; border-radius: 16px; font-size: 21px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 0 rgba(0,0,0,0.25); transition: transform 0.08s; }
@@ -42,6 +45,7 @@ button.small { background: var(--glass); padding: 8px 14px; border-radius: 12px;
 .bar h2 { margin: 0; font-size: 24px; }
 button.back { background: var(--glass); border-radius: 12px; padding: 8px 14px; font-size: 17px; border: 1px solid #ffd16655; }
 #levels, #garage { flex-direction: column; overflow-y: auto; padding: 70px 16px 24px; touch-action: pan-y; background: rgba(29,41,61,0.35); }
+#garage { justify-content: flex-end; background: linear-gradient(rgba(29,41,61,0) 35%, rgba(29,41,61,0.88)); }
 .tiers { display: flex; flex-direction: column; gap: 14px; max-width: 980px; width: 100%; margin: 0 auto; }
 .tier h3 { margin: 0 0 8px; font-size: 19px; text-shadow: 0 2px 0 #25344a; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
@@ -94,6 +98,19 @@ button.chip.sel { background: var(--teal); color: #16283a; border-color: var(--t
 #hud .flash.show { opacity: 1; }
 #hud .hint { bottom: 22%; left: 50%; transform: translateX(-50%); background: var(--glass); padding: 8px 14px; border-radius: 12px; font-size: 17px; white-space: nowrap; max-width: 92vw; white-space: normal; text-align: center; }
 body.touchmode #hud .hint { bottom: 150px; top: auto; }
+#hud .stars { top: 40px; left: 16px; font-size: 18px; font-weight: 700; color: #ffd23f; text-shadow: 0 2px 0 #25344a; }
+#hud .stars.bump { animation: bump 0.3s ease-out; }
+@keyframes bump { 0% { transform: scale(1.5); } 100% { transform: scale(1); } }
+body.coaching #hud .top { top: 62px; } body.coaching #hud .split { top: 120px; }
+.coachkey { bottom: 24%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; pointer-events: none; }
+.coachkey[data-key="none"] .kcap { display: none; }
+.coachkey .ktext { font-size: 20px; font-weight: 700; color: #fff; text-shadow: 0 2px 0 #25344a, 0 0 12px rgba(0,0,0,0.4); }
+.kcap { min-width: 72px; text-align: center; padding: 8px 18px; border-radius: 12px; background: #f4f1ea; color: #25344a; font-weight: 700; font-size: 20px; box-shadow: 0 7px 0 #9aa3b8; }
+.coachkey[data-key="press"] .kcap { animation: keypress 1s infinite; }
+.coachkey[data-key="hold"] .kcap { transform: translateY(6px); box-shadow: 0 1px 0 #9aa3b8; background: #ffd166; }
+.coachkey[data-key="release"] .kcap { animation: keyrel 0.6s infinite; background: #5fe1ff; }
+@keyframes keypress { 0%, 40% { transform: none; box-shadow: 0 7px 0 #9aa3b8; } 55%, 100% { transform: translateY(6px); box-shadow: 0 1px 0 #9aa3b8; } }
+@keyframes keyrel { 0% { transform: translateY(6px); box-shadow: 0 1px 0 #9aa3b8; } 60%, 100% { transform: none; box-shadow: 0 7px 0 #9aa3b8; } }
 #hud .speed { bottom: 18px; right: 20px; font-size: 22px; font-weight: 700; text-shadow: 0 2px 0 #25344a; font-variant-numeric: tabular-nums; }
 #hud .charge { bottom: 52px; right: 20px; width: 120px; height: 10px; border-radius: 6px; background: #25344a88; overflow: hidden; opacity: 0; transition: opacity 0.15s; }
 #hud .charge.on { opacity: 1; }
@@ -127,12 +144,20 @@ button.small.on { border-color: var(--teal); }
 .modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(20,28,44,0.55); z-index: 30; }
 
 /* finish */
-#finish { align-items: center; justify-content: center; padding: 16px; }
+#finish { align-items: center; justify-content: flex-end; padding: 16px 6vw; }
+@media (max-aspect-ratio: 1/1) { #finish { align-items: flex-end; justify-content: center; padding: 16px; } }
 .fin { align-items: center; text-align: center; }
 .ftime { font-size: 50px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .pbtag { background: var(--gold); color: #25344a; padding: 3px 12px; border-radius: 10px; font-weight: 700; }
 .delta { opacity: 0.85; } .delta.bad { color: #ffb3bb; }
-.medalwon { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 700; }
+.medalwon { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+.medalbig { position: relative; display: flex; }
+.medalwon.pop .medalbig { animation: medalpop 0.9s cubic-bezier(.2,1.6,.4,1) both; }
+@keyframes medalpop { 0% { transform: scale(0) rotate(-200deg); } 70% { transform: scale(1.15) rotate(10deg); } 100% { transform: scale(1) rotate(0); } }
+.shine { position: absolute; inset: -18px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 10%, rgba(255,240,170,0.65) 12% 16%, transparent 18% 35%, rgba(255,240,170,0.65) 37% 41%, transparent 43% 60%, rgba(255,240,170,0.65) 62% 66%, transparent 68% 85%, rgba(255,240,170,0.65) 87% 91%, transparent 93%); animation: spin 4s linear infinite; z-index: -1; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.starline { color: #ffd23f; font-size: 17px; }
+.pbtag { animation: medalpop 0.6s cubic-bezier(.2,1.6,.4,1) both; animation-delay: 0.15s; }
 .next { font-size: 15px; opacity: 0.9; }
 .row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; width: 100%; }
 .row button.big { flex: 1; }
@@ -159,6 +184,7 @@ button.eb.go { background: linear-gradient(180deg, #ff7b5c, #ffb547); color: #25
 .emed { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0; }
 .mylist { display: flex; flex-direction: column; gap: 6px; }
 @media (max-width: 700px) {
+  #title { align-items: center; padding-left: 16px; background: linear-gradient(rgba(25,36,62,0.2), rgba(25,36,62,0.75)); }
   .epanel { left: 8px; right: 8px; width: auto; top: auto; height: 52%; }
   .egrid { grid-template-columns: repeat(4, 1fr); }
   #hud .time { font-size: 30px; min-width: 150px; }
@@ -167,10 +193,11 @@ button.eb.go { background: linear-gradient(180deg, #ff7b5c, #ffb547); color: #25
   #hud .split { top: 92px; }
   #pre { align-items: flex-end; justify-content: center; }
 }
+body.clean #hud, body.clean #finish, body.clean #toast, body.clean .modal { display: none !important; }
 body.covermode .screen, body.covermode #toast, body.covermode .modal { display: none !important; }
 @media (max-height: 600px) {
   #title { gap: 6px; padding: 8px 16px; }
-  .logo .l1, .logo .l2 { font-size: min(13vw, 13vh); }
+  .logoimg { width: min(330px, 46vh * 1.5); }
   .tag { font-size: 15px; margin-bottom: 2px; }
   .menu { display: grid; grid-template-columns: 1fr 1fr; width: min(520px, 92vw); gap: 8px; }
   button.big { padding: 10px 14px; font-size: 18px; }
@@ -193,7 +220,7 @@ body.covermode .screen, body.covermode #toast, body.covermode .modal { display: 
 <div id="finish" class="screen"></div>
 <div id="editor" class="screen"></div>
 <div id="toast"></div>
-<div id="loading">DRIFT GHOST<div class="bar"><i></i></div></div>
+<div id="loading"><img src="logo.png" alt="Drift Ghost" style="width:min(420px,80vw)"><div class="bar"><i></i></div></div>
 <script type="module" src="main.js"></script>
 </body>
 </html>
