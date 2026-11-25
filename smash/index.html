@@ -216,6 +216,17 @@ body,button{font-family:var(--font)}
 @media (max-width:360px){.tool{width:58px;height:66px}.tool .tn{font-size:10.5px}.tool .ic{width:24px;height:24px}.score{min-width:62px;padding:3px 6px}.ib{width:40px;height:40px}.top{gap:5px}.otext{font-size:12.5px}.results .btn,.row .btn{padding:8px 11px 10px;font-size:14px}}
 @media (max-height:480px) and (orientation:landscape){body .kc-tracker{left:60px!important;transform:none!important;padding:4px 8px 4px 6px!important}.howto .foot{bottom:-12px;padding:12px 0 8px}}
 @media (max-height:340px){.fin30 p{margin:4px 0;font-size:13px}.fin30 .btn{padding:6px 10px 8px;font-size:14px}.kc-tracker{font-size:13px}.title .themes{display:none}.title .tag{display:none}.tool{height:50px;width:58px}.tool .tn{font-size:10.5px}.tool .ic{width:20px;height:20px}.rstars .star{width:28px;height:28px}.results h2{font-size:20px}.rows{font-size:12.5px}.pausep h2{font-size:18px;margin:0}.pgoal{font-size:13px;margin:0 0 4px}.pausep .btn{padding:6px 10px 8px;font-size:14px}}
+/* ---- M8 ---- */
+.obj{max-width:560px;margin:0 auto}
+#toast{bottom:calc(max(8px,var(--safe-area-inset-bottom,0px)) + var(--toolsh,92px) + 14px)}
+@media (max-height:480px) and (orientation:landscape){#toast{bottom:8px}}
+.title .row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.title .row .btn{justify-content:center;padding:10px 6px 12px;font-size:15px;gap:5px}
+.title .row.settings{grid-template-columns:repeat(4,auto);justify-content:center;gap:2px}
+.title .themes{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.title .theme img{width:100%;max-width:76px;height:auto;aspect-ratio:16/9}
+@media (max-width:360px){.title .row{gap:4px}.title .row .btn{font-size:12px;padding:8px 3px 10px;border-width:2px}.title .row .btn svg{display:none}}
+@media (max-width:420px){.title .row.settings{grid-template-columns:repeat(2,auto);gap:0 18px}.title .row .btn{font-size:13.5px}.title .row .btn svg{width:18px;height:18px}.title .theme{font-size:11px}.title .btn.big{font-size:21px;padding:12px 18px 14px}}
+.presets{flex-wrap:wrap;overflow:visible}
+@media (max-height:480px) and (orientation:landscape){.presets{left:60px;right:60px;justify-content:center}.presets button{padding:4px 8px;font-size:12px}.title .row{display:flex}.title .themes{display:flex}.title .theme img{width:52px}}
 </style>
 </head>
 <body>
@@ -226,6 +237,6 @@ body,button{font-family:var(--font)}
 <div id="toast"></div>
 <div id="modal"></div>
 <div id="loading">Loading…</div>
-<script type="module" src="./game.js?v=4a33116221"></script>
+<script type="module" src="./game.js?v=9f1ddbfff3"></script>
 </body>
 </html>
