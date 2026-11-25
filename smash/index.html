@@ -156,9 +156,10 @@ body,button{font-family:var(--font)}
 
 /* the layout boxes never take taps: only the buttons in them do (#hud>* used to win over .bottom's none) */
 #hud>.top,#hud>.bottom,#hud>.chainb,#hud .tools,#hud .acts{pointer-events:none}
-#hud .tools>*,#hud .acts>*,#hud .top>*{pointer-events:auto}
+#hud .tools>*,#hud .acts>*,#hud .top>*,#hud .presets>*{pointer-events:auto}
+#hud>.presets{pointer-events:none}
 /* ---- M6: honest, readable HUD; pause / how-to; landscape phones ---- */
-#toast{z-index:40}
+#toast{z-index:40;width:max-content;max-width:min(88vw,460px)}
 .lrow{display:flex;align-items:baseline;gap:8px}.lrow .lname{flex:1;min-width:0}
 .onow{font-weight:700;font-size:15px;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
 .otext{font-size:13.5px;line-height:1.2;white-space:normal;overflow:visible;opacity:.9}
@@ -177,7 +178,7 @@ body,button{font-family:var(--font)}
 .tip{font-weight:600;margin:4px;opacity:.85}
 .pausep .col{display:flex;flex-direction:column;gap:10px;margin:8px auto;max-width:260px}.pausep .col .btn{justify-content:center}
 .pausep h2,.howto h2{margin:2px 0 6px}.pgoal{margin:2px 0 8px;line-height:1.35}
-.howto .btn{position:sticky;bottom:2px}
+.howto .foot{position:sticky;bottom:-22px;margin:0 -8px;padding:16px 0 14px;background:linear-gradient(#f4e8d200,#f4e8d2 40%)}
 .howto ul{text-align:left;margin:6px 0 14px;padding-left:20px;line-height:1.35}.howto li{margin:5px 0}
 #modal{place-items:safe center}
 /* scroll cue: a shadow at the edge of any panel that has more below or above */
@@ -205,6 +206,16 @@ body,button{font-family:var(--font)}
   .results h2{font-size:24px;margin:0}.rstars .star{width:40px;height:40px}.rscore{font-size:28px;line-height:1.1}.rows{margin:4px auto;max-width:460px}.results .row{margin-top:6px}.results .btn.ad{margin-top:6px}
   .pausep .col{display:grid;grid-template-columns:1fr 1fr;max-width:420px}.howto ul{font-size:14px;margin:2px 0 8px}.howto li{margin:2px 0}
 }
+/* ---- M7 ---- */
+.howto h3{margin:8px 0 2px;text-align:left;font-size:16px}.howto ul.plain{list-style:none;padding:0;margin:2px 0}.howto ul.plain li{display:flex;gap:8px;align-items:flex-start;margin:4px 0}.hic{flex:none;width:26px;height:26px}.hic svg{width:100%;height:100%}
+.confetti{position:fixed;inset:0;overflow:hidden;pointer-events:none}.confetti i{position:absolute;top:-20px;width:10px;height:16px;border-radius:2px;animation:conf 3s linear infinite}
+@keyframes conf{to{transform:translateY(110vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){.confetti{display:none}}
+@media (orientation:portrait){.tools{flex-wrap:wrap;overflow:visible}}
+@media (max-height:480px) and (orientation:landscape){.tools{flex-wrap:wrap;overflow:visible!important;align-content:flex-start;flex-direction:column-reverse}}
+@media (max-width:360px){.tool{width:58px;height:66px}.tool .tn{font-size:10.5px}.tool .ic{width:24px;height:24px}.score{min-width:62px;padding:3px 6px}.ib{width:40px;height:40px}.top{gap:5px}.otext{font-size:12.5px}.results .btn,.row .btn{padding:8px 11px 10px;font-size:14px}}
+@media (max-height:480px) and (orientation:landscape){body .kc-tracker{left:60px!important;transform:none!important;padding:4px 8px 4px 6px!important}.howto .foot{bottom:-12px;padding:12px 0 8px}}
+@media (max-height:340px){.fin30 p{margin:4px 0;font-size:13px}.fin30 .btn{padding:6px 10px 8px;font-size:14px}.kc-tracker{font-size:13px}.title .themes{display:none}.title .tag{display:none}.tool{height:50px;width:58px}.tool .tn{font-size:10.5px}.tool .ic{width:20px;height:20px}.rstars .star{width:28px;height:28px}.results h2{font-size:20px}.rows{font-size:12.5px}.pausep h2{font-size:18px;margin:0}.pgoal{font-size:13px;margin:0 0 4px}.pausep .btn{padding:6px 10px 8px;font-size:14px}}
 </style>
 </head>
 <body>
@@ -215,6 +226,6 @@ body,button{font-family:var(--font)}
 <div id="toast"></div>
 <div id="modal"></div>
 <div id="loading">Loading…</div>
-<script type="module" src="./game.js?v=d3c129d6a0"></script>
+<script type="module" src="./game.js?v=4a33116221"></script>
 </body>
 </html>
