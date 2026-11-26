@@ -358,6 +358,17 @@ body.touchmode .finwrap > .finbtns { position: fixed; top: calc(clamp(54px, 9.5v
 body.touchmode[data-screen='finish'] #toast { top: auto; bottom: 8px; }
 @media (min-aspect-ratio: 1/1) and (max-height: 600px) { .finwrap > .finbtns { padding: 6px 8px; gap: 6px; width: 100%; }
   body.touchmode .finwrap > .finbtns { flex-direction: row; width: min(760px, 96vw); top: calc(15.5vh + var(--safe-area-inset-top, 0px)); } body.touchmode .finwrap { padding-top: calc(15.5vh + 62px); box-sizing: border-box; } body.touchmode #finish { align-items: flex-end; } body.touchmode .fin .ftime { font-size: 24px; } body.touchmode .fin .medalwon .medal svg, body.touchmode .fin .medalwon .flagbig svg { width: 26px; height: 26px; } body.touchmode .fin { gap: 4px; padding-bottom: 6px; } .finwrap > .finbtns button.big { font-size: 15px; padding: 8px 6px; min-height: 44px; } .finwrap > .finbtns button.small { font-size: 13px; padding: 6px 6px; } }
+.prescroll { display: flex; flex-direction: column; gap: inherit; overflow-y: auto; min-height: 0; flex: 1 1 auto; overscroll-behavior: contain; } .prebody { overflow: hidden !important; } .prefoot { display: flex; flex-direction: column; gap: 8px; flex: none; padding-top: 2px; } .prefoot button { width: 100%; box-sizing: border-box; }
+.ebar { display: block; align-self: stretch; height: 5px; border-radius: 3px; background: #ffd166; transform-origin: left; } #hud[data-prompt="fresh"] .ebar { animation: ebar 1.5s linear forwards; } @keyframes ebar { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+#hud.held .time { opacity: 0.55; }
+@media (min-aspect-ratio: 1/1) and (max-height: 420px) { .prebody { max-height: calc(100vh - 62px); padding: 8px 14px 8px; gap: 3px; box-sizing: border-box; margin-bottom: -8px; } .prefoot { flex-direction: row; gap: 6px; } .prefoot button { flex: 1; min-height: 44px; } }
+@media (min-aspect-ratio: 1/1) { body.touchmode .finwrap > .finbtns { flex-direction: row; width: min(760px, 96vw); } body.touchmode .finwrap > .finbtns .row { flex: 1; } body.touchmode #finish { align-items: flex-end; } body.touchmode .finwrap { padding-top: calc(clamp(54px, 9.5vh, 100px) + 84px); box-sizing: border-box; } }
+@media (min-aspect-ratio: 1/1) and (max-height: 600px) { body.touchmode .finwrap { padding-top: calc(15.5vh + 62px); } }
+@media (max-width: 700px) and (max-height: 420px) { #hud .lesson { width: min(300px, 46vw) !important; } #hud .gapplate em { font-size: 10px; } }
+@media (max-aspect-ratio: 1/1) and (max-height: 760px) { body.touchmode .fin .mslots, body.touchmode .fin .goalbox > span, body.touchmode .fin .delta { display: none; } body.touchmode .fin .ftime { font-size: 22px; } }
+@media (min-aspect-ratio: 1/1) and (min-height: 601px) and (max-height: 780px) { #title { gap: 4px; padding-top: 10px; padding-bottom: 10px; } }
+@media (min-aspect-ratio: 1/1) and (max-height: 520px) { .prebody .medals { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 6px; } .prebody .mrow { padding: 2px 6px; min-height: 0; font-size: 14px; gap: 5px; } .prescroll .acenote { display: none; } .prescroll .lbl, .prescroll .pb, .prescroll .sub { font-size: 12.5px; line-height: 1.25; } .prebody .ghosts .chip { min-height: 34px; padding: 4px 9px; font-size: 13px; } }
+@media (min-aspect-ratio: 1/1) and (max-height: 340px) { .prescroll .daily { display: none; } }
 </style>
 </head>
 <body>
